@@ -86,14 +86,14 @@ const translations = {
     productManager: 'Product Manager',
     cloudscaleSolutions: 'CloudScale Solutions',
     innovationLabs: 'Innovation Labs',
-    testimonial1: 'ArchitectVPS has been a game-changer for our startup. The performance is incredible, and the support team actually knows what they\'re talking about. We\'ve been running our production apps here for 8 months without a single issue.',
-    testimonial2: 'I\'ve worked with dozens of hosting providers, and ArchitectVPS stands out. The network performance is consistently excellent, and their infrastructure is clearly built by people who understand modern development workflows.',
-    testimonial3: 'What impressed me most is how quickly we could scale. When our app went viral, ArchitectVPS handled the traffic surge flawlessly. The peace of mind is worth every penny.',
+    testimonial1: 'TotVPS has been a game-changer for our startup. The performance is incredible, and the support team actually knows what they\'re talking about. We\'ve been running our production apps here for 8 months without a single issue.',
+    testimonial2: 'I\'ve worked with dozens of hosting providers, and TotVPS stands out. The network performance is consistently excellent, and their infrastructure is clearly built by people who understand modern development workflows.',
+    testimonial3: 'What impressed me most is how quickly we could scale. When our app went viral, TotVPS handled the traffic surge flawlessly. The peace of mind is worth every penny.',
 
     // FAQ
     faqTitle: 'Questions & Answers',
     faqSubtitle: 'Everything you need to know about our VPS hosting',
-    faqQuestion1: 'What makes ArchitectVPS different from other VPS providers?',
+    faqQuestion1: 'What makes TotVPS different from other VPS providers?',
     faqAnswer1: 'We focus on performance, reliability, and developer experience. Our infrastructure is built specifically for modern applications with SSD storage, premium network connectivity, and instant provisioning.',
     faqQuestion2: 'How quickly can I get my VPS up and running?',
     faqAnswer2: 'Your VPS is provisioned instantly after payment confirmation. You\'ll receive your login credentials within minutes and can start deploying immediately.',
@@ -165,7 +165,7 @@ const translations = {
     viewPlans: 'Xem Bảng Giá',
 
     // Value Proposition
-    valueTitle: 'Tại Sao Chọn ArchitectVPS?',
+    valueTitle: 'Tại Sao Chọn TotVPS?',
     valueSubtitle: 'Nền tảng của sự xuất sắc bắt đầu từ cơ sở hạ tầng không thỏa hiệp',
 
     enterpriseSecurity: 'Bảo Mật Doanh Nghiệp',
@@ -225,14 +225,14 @@ const translations = {
     productManager: 'Quản Lý Sản Phẩm',
     cloudscaleSolutions: 'CloudScale Solutions',
     innovationLabs: 'Innovation Labs',
-    testimonial1: 'ArchitectVPS đã thay đổi hoàn toàn startup của chúng tôi. Hiệu suất đáng kinh ngạc và đội ngũ hỗ trợ thực sự hiểu những gì họ đang nói. Chúng tôi đã chạy các ứng dụng production ở đây trong 8 tháng mà không gặp một sự cố nào.',
-    testimonial2: 'Tôi đã làm việc với hàng chục nhà cung cấp hosting, và ArchitectVPS nổi bật. Hiệu suất mạng luôn xuất sắc, và cơ sở hạ tầng của họ rõ ràng được xây dựng bởi những người hiểu quy trình phát triển hiện đại.',
-    testimonial3: 'Điều ấn tượng nhất với tôi là tốc độ mở rộng nhanh chóng. Khi ứng dụng của chúng tôi viral, ArchitectVPS xử lý lưu lượng tăng đột biến một cách hoàn hảo. Sự an tâm này đáng giá từng xu.',
+    testimonial1: 'TotVPS đã thay đổi hoàn toàn startup của chúng tôi. Hiệu suất đáng kinh ngạc và đội ngũ hỗ trợ thực sự hiểu những gì họ đang nói. Chúng tôi đã chạy các ứng dụng production ở đây trong 8 tháng mà không gặp một sự cố nào.',
+    testimonial2: 'Tôi đã làm việc với hàng chục nhà cung cấp hosting, và TotVPS nổi bật. Hiệu suất mạng luôn xuất sắc, và cơ sở hạ tầng của họ rõ ràng được xây dựng bởi những người hiểu quy trình phát triển hiện đại.',
+    testimonial3: 'Điều ấn tượng nhất với tôi là tốc độ mở rộng nhanh chóng. Khi ứng dụng của chúng tôi viral, TotVPS xử lý lưu lượng tăng đột biến một cách hoàn hảo. Sự an tâm này đáng giá từng xu.',
 
     // FAQ
     faqTitle: 'Câu Hỏi Thường Gặp',
     faqSubtitle: 'Mọi thứ bạn cần biết về dịch vụ VPS hosting của chúng tôi',
-    faqQuestion1: 'Điều gì làm cho ArchitectVPS khác biệt so với các nhà cung cấp VPS khác?',
+    faqQuestion1: 'Điều gì làm cho TotVPS khác biệt so với các nhà cung cấp VPS khác?',
     faqAnswer1: 'Chúng tôi tập trung vào hiệu suất, độ tin cậy và trải nghiệm của nhà phát triển. Cơ sở hạ tầng của chúng tôi được xây dựng đặc biệt cho các ứng dụng hiện đại với lưu trữ SSD, kết nối mạng cao cấp và cung cấp tức thì.',
     faqQuestion2: 'Tôi có thể khởi chạy VPS của mình nhanh như thế nào?',
     faqAnswer2: 'VPS của bạn được cung cấp ngay lập tức sau khi xác nhận thanh toán. Bạn sẽ nhận được thông tin đăng nhập trong vòng vài phút và có thể bắt đầu triển khai ngay lập tức.',

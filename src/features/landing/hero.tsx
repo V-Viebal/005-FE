@@ -1,16 +1,16 @@
 // 1. Imports
 import React, { useState, useEffect } from 'react';
 import { ArrowRight, Zap } from 'lucide-react';
-import { useLanguage } from '../contexts/LanguageContext';
-import ParticleBackground from './ParticleBackground';
+import { useLanguage } from '@/contexts/LanguageContext';
+import { ParticleBackground } from '@/components/ui/particle-background';
 
 // 2. Types
-interface HeroProps {
-  // Add props if needed in the future
-}
+type HeroProps = {
+  className?: string;
+};
 
 // 3. Component
-const Hero: React.FC<HeroProps> = () => {
+const Hero = ({ className }: HeroProps) => {
   // 4. Hooks
   const { t } = useLanguage();
   const [isLoaded, setIsLoaded] = useState(false);
@@ -28,9 +28,9 @@ const Hero: React.FC<HeroProps> = () => {
   // Add constants if needed
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section id="home" className={`relative min-h-screen flex items-center justify-center overflow-hidden ${className || ''}`}>
       <ParticleBackground />
-      
+
       {/* Content */}
       <div className="relative z-10 text-center max-w-4xl mx-auto px-6">
         <div
@@ -44,7 +44,7 @@ const Hero: React.FC<HeroProps> = () => {
               {t('heroTitle')}
             </span>
           </h1>
-          
+
           {/* Subtitle */}
           <p
             className={`text-xl md:text-2xl text-slate-300 mb-8 max-w-3xl mx-auto leading-relaxed transform transition-all duration-1000 delay-300 ${
@@ -53,7 +53,7 @@ const Hero: React.FC<HeroProps> = () => {
           >
             {t('heroSubtitle')}
           </p>
-          
+
           {/* CTA Buttons */}
           <div
             className={`flex flex-col sm:flex-row gap-4 justify-center items-center transform transition-all duration-1000 delay-500 ${
@@ -71,7 +71,7 @@ const Hero: React.FC<HeroProps> = () => {
           </div>
         </div>
       </div>
-      
+
       {/* Scroll Indicator */}
       <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
         <div className="w-6 h-10 border-2 border-slate-400 rounded-full flex justify-center">
@@ -82,4 +82,7 @@ const Hero: React.FC<HeroProps> = () => {
   );
 };
 
-export default Hero;
+Hero.displayName = 'Hero';
+
+export { Hero };
+export type { HeroProps };

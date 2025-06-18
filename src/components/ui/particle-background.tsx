@@ -2,7 +2,7 @@
 import React, { useEffect, useRef } from 'react';
 
 // 2. Types
-interface Particle {
+type Particle = {
   x: number;
   y: number;
   vx: number;
@@ -10,14 +10,14 @@ interface Particle {
   size: number;
   opacity: number;
   connections: number[];
-}
+};
 
-interface ParticleBackgroundProps {
-  // Add props if needed in the future
-}
+type ParticleBackgroundProps = {
+  className?: string;
+};
 
 // 3. Component
-const ParticleBackground: React.FC<ParticleBackgroundProps> = () => {
+const ParticleBackground = ({ className }: ParticleBackgroundProps) => {
   // 4. Hooks
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const particlesRef = useRef<Particle[]>([]);
@@ -116,7 +116,7 @@ const ParticleBackground: React.FC<ParticleBackgroundProps> = () => {
       particlesRef.current.forEach((particle) => {
         ctx.beginPath();
         ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
-        
+
         // Create radial gradient for glow effect
         const gradient = ctx.createRadialGradient(
           particle.x, particle.y, 0,
@@ -124,7 +124,7 @@ const ParticleBackground: React.FC<ParticleBackgroundProps> = () => {
         );
         gradient.addColorStop(0, `rgba(56, 189, 248, ${particle.opacity})`);
         gradient.addColorStop(1, 'rgba(56, 189, 248, 0)');
-        
+
         ctx.fillStyle = gradient;
         ctx.fill();
       });
@@ -166,10 +166,13 @@ const ParticleBackground: React.FC<ParticleBackgroundProps> = () => {
   return (
     <canvas
       ref={canvasRef}
-      className="absolute inset-0 pointer-events-none"
+      className={`absolute inset-0 pointer-events-none ${className || ''}`}
       style={{ background: 'radial-gradient(ellipse at center, rgba(15, 23, 42, 0.8) 0%, rgba(15, 23, 42, 1) 100%)' }}
     />
   );
 };
 
-export default ParticleBackground;
+ParticleBackground.displayName = 'ParticleBackground';
+
+export { ParticleBackground };
+export type { ParticleBackgroundProps };

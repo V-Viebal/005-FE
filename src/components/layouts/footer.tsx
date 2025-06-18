@@ -1,15 +1,15 @@
 // 1. Imports
 import React from 'react';
 import { Mail, Phone, MapPin, Github, Twitter, Linkedin } from 'lucide-react';
-import { useLanguage } from '../contexts/LanguageContext';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 // 2. Types
-interface FooterProps {
-  // Add props if needed in the future
-}
+type FooterProps = {
+  className?: string;
+};
 
 // 3. Component
-const Footer: React.FC<FooterProps> = () => {
+const Footer = ({ className }: FooterProps) => {
   // 4. Hooks
   const { t } = useLanguage();
 
@@ -23,16 +23,16 @@ const Footer: React.FC<FooterProps> = () => {
   // Add constants if needed
 
   return (
-    <footer className="bg-slate-900 border-t border-slate-800">
+    <footer className={`bg-slate-900 border-t border-slate-800 ${className || ''}`}>
       <div className="container mx-auto px-6 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Company Info */}
           <div className="space-y-4">
             <div className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
-              ArchitectVPS
+              TotVPS
             </div>
             <p className="text-slate-400 leading-relaxed">
-              Empowering creators with high-performance VPS hosting solutions. 
+              Empowering creators with high-performance VPS hosting solutions.
               Built for developers, by developers.
             </p>
             <div className="flex space-x-4">
@@ -100,7 +100,7 @@ const Footer: React.FC<FooterProps> = () => {
             <div className="space-y-3">
               <div className="flex items-center space-x-3 text-slate-400">
                 <Mail className="w-4 h-4" />
-                <span>support@architectvps.com</span>
+                <span>support@totvps.com</span>
               </div>
               <div className="flex items-center space-x-3 text-slate-400">
                 <Phone className="w-4 h-4" />
@@ -117,7 +117,7 @@ const Footer: React.FC<FooterProps> = () => {
         {/* Bottom Bar */}
         <div className="border-t border-slate-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
           <p className="text-slate-400 text-sm">
-            © 2024 ArchitectVPS. All rights reserved.
+            © 2024 TotVPS. All rights reserved.
           </p>
           <div className="flex space-x-6 mt-4 md:mt-0">
             <a href="#" className="text-slate-400 hover:text-white text-sm transition-colors duration-300">
@@ -136,4 +136,7 @@ const Footer: React.FC<FooterProps> = () => {
   );
 };
 
-export default Footer;
+Footer.displayName = 'Footer';
+
+export { Footer };
+export type { FooterProps };

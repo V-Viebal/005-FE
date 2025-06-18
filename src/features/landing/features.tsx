@@ -1,15 +1,22 @@
 // 1. Imports
 import React, { useState, useEffect } from 'react';
 import { Server, Shield, Zap, Globe, Headphones, Settings } from 'lucide-react';
-import { useLanguage } from '../contexts/LanguageContext';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 // 2. Types
-interface FeaturesProps {
-  // Add props if needed in the future
-}
+type Feature = {
+  icon: React.ComponentType<{ className?: string }>;
+  title: string;
+  description: string;
+  delay: number;
+};
+
+type FeaturesProps = {
+  className?: string;
+};
 
 // 3. Component
-const Features: React.FC<FeaturesProps> = () => {
+const Features = ({ className }: FeaturesProps) => {
   // 4. Hooks
   const { t } = useLanguage();
   const [isVisible, setIsVisible] = useState(false);
@@ -32,7 +39,7 @@ const Features: React.FC<FeaturesProps> = () => {
   }, []);
 
   // 7. Constants
-  const features = [
+  const features: Feature[] = [
     {
       icon: Server,
       title: t('enterpriseHardware'),
@@ -72,7 +79,7 @@ const Features: React.FC<FeaturesProps> = () => {
   ];
 
   return (
-    <section id="features" className="py-20 bg-slate-900/30">
+    <section id="features" className={`py-20 bg-slate-900/30 ${className || ''}`}>
       <div className="container mx-auto px-6">
         {/* Section Header */}
         <div className="text-center mb-16">
@@ -108,14 +115,14 @@ const Features: React.FC<FeaturesProps> = () => {
             >
               {/* Gradient Overlay */}
               <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-cyan-500/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-              
+
               {/* Icon */}
               <div className="relative mb-6">
                 <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                   <feature.icon className="w-8 h-8 text-white" />
                 </div>
               </div>
-              
+
               {/* Content */}
               <div className="relative">
                 <h3 className="text-xl font-bold text-white mb-3 group-hover:text-blue-100 transition-colors duration-300">
@@ -133,4 +140,7 @@ const Features: React.FC<FeaturesProps> = () => {
   );
 };
 
-export default Features;
+Features.displayName = 'Features';
+
+export { Features };
+export type { FeaturesProps, Feature };

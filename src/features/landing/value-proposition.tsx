@@ -1,11 +1,28 @@
+// 1. Imports
 import React, { useEffect, useState } from 'react';
-import { useLanguage } from '../contexts/LanguageContext';
+import { useLanguage } from '@/contexts/LanguageContext';
 import { Shield, Zap, Clock, Users } from 'lucide-react';
 
-const ValueProposition: React.FC = () => {
+// 2. Types
+type ValueFeature = {
+  icon: React.ComponentType<{ className?: string }>;
+  title: string;
+  description: string;
+  large: boolean;
+  delay: number;
+};
+
+type ValuePropositionProps = {
+  className?: string;
+};
+
+// 3. Component
+const ValueProposition = ({ className }: ValuePropositionProps) => {
+  // 4. Hooks
   const { t } = useLanguage();
   const [isVisible, setIsVisible] = useState(false);
 
+  // 5. Effects
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -23,7 +40,7 @@ const ValueProposition: React.FC = () => {
   }, []);
 
   // 7. Constants
-  const features = [
+  const features: ValueFeature[] = [
     {
       icon: Zap,
       title: t('lightningFast'),
@@ -55,7 +72,7 @@ const ValueProposition: React.FC = () => {
   ];
 
   return (
-    <section id="value-section" className="py-20 bg-slate-900/50">
+    <section id="value-section" className={`py-20 bg-slate-900/50 ${className || ''}`}>
       <div className="container mx-auto px-6">
         {/* Section Header */}
         <div className="text-center mb-16">
@@ -118,4 +135,7 @@ const ValueProposition: React.FC = () => {
   );
 };
 
-export default ValueProposition;
+ValueProposition.displayName = 'ValueProposition';
+
+export { ValueProposition };
+export type { ValuePropositionProps };

@@ -1,15 +1,20 @@
 // 1. Imports
 import React, { useState, useEffect } from 'react';
 import { ChevronDown, ChevronUp } from 'lucide-react';
-import { useLanguage } from '../contexts/LanguageContext';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 // 2. Types
-interface FAQProps {
-  // Add props if needed in the future
-}
+type FAQItem = {
+  question: string;
+  answer: string;
+};
+
+type FAQProps = {
+  className?: string;
+};
 
 // 3. Component
-const FAQ: React.FC<FAQProps> = () => {
+const FAQ = ({ className }: FAQProps) => {
   // 4. Hooks
   const { t } = useLanguage();
   const [isVisible, setIsVisible] = useState(false);
@@ -33,7 +38,7 @@ const FAQ: React.FC<FAQProps> = () => {
   }, []);
 
   // 7. Constants
-  const faqs = [
+  const faqs: FAQItem[] = [
     {
       question: t('faqQuestion1'),
       answer: t('faqAnswer1'),
@@ -65,7 +70,7 @@ const FAQ: React.FC<FAQProps> = () => {
   };
 
   return (
-    <section id="faq" className="py-20 bg-slate-900/30">
+    <section id="faq" className={`py-20 bg-slate-900/30 ${className || ''}`}>
       <div className="container mx-auto px-6">
         {/* Section Header */}
         <div className="text-center mb-16">
@@ -114,7 +119,7 @@ const FAQ: React.FC<FAQProps> = () => {
                   )}
                 </div>
               </button>
-              
+
               <div
                 className={`transition-all duration-300 ease-in-out ${
                   openIndex === index
@@ -136,4 +141,7 @@ const FAQ: React.FC<FAQProps> = () => {
   );
 };
 
-export default FAQ;
+FAQ.displayName = 'FAQ';
+
+export { FAQ };
+export type { FAQProps, FAQItem };

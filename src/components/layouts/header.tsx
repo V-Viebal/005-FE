@@ -1,14 +1,14 @@
 // 1. Imports
 import React, { useState, useEffect } from 'react';
-import { useLanguage } from '../contexts/LanguageContext';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 // 2. Types
-interface HeaderProps {
-  // Add props if needed in the future
-}
+type HeaderProps = {
+  className?: string;
+};
 
 // 3. Component
-const Header: React.FC<HeaderProps> = () => {
+const Header = ({ className }: HeaderProps) => {
   // 4. Hooks
   const { language, setLanguage, t } = useLanguage();
   const [isScrolled, setIsScrolled] = useState(false);
@@ -34,13 +34,13 @@ const Header: React.FC<HeaderProps> = () => {
         isScrolled
           ? 'bg-slate-900/50 backdrop-blur-xl border-b border-slate-700/50'
           : 'bg-transparent'
-      }`}
+      } ${className || ''}`}
     >
       <div className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
           <div className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
-            ArchitectVPS
+            TotVPS
           </div>
 
           {/* Navigation */}
@@ -82,4 +82,7 @@ const Header: React.FC<HeaderProps> = () => {
   );
 };
 
-export default Header;
+Header.displayName = 'Header';
+
+export { Header };
+export type { HeaderProps };

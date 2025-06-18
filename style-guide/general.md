@@ -1,310 +1,180 @@
-# VieVPS Frontend - General Style Guide
+# General Style Guide
 
-## Project Overview
+This document outlines the general coding standards and conventions for the project, based on the bulletproof React architecture.
 
-This style guide defines the coding standards and architectural patterns for the VieVPS Frontend application, built with React, TypeScript, and Vite.
+## File and Directory Naming
 
-## Architecture Pattern
+### Files
+- Use **kebab-case** for all file names
+- TypeScript/React files: `.tsx` for components, `.ts` for utilities
+- Test files: `*.test.tsx` or `*.test.ts`
+- Story files: `*.stories.tsx`
+- Examples: `dashboard-layout.tsx`, `api-client.ts`, `button.test.tsx`
 
-### Component-Based Architecture
-The project follows a component-based architecture with clear separation of concerns:
+### Directories
+- Use **kebab-case** for all directory names
+- Group related functionality together
+- Examples: `components/ui/button/`, `features/discussions/`
 
+## Project Structure
+
+### Component Organization
 ```
-src/
-├── components/      # Reusable UI components
-├── contexts/        # React Context providers
-├── hooks/          # Custom React hooks
-├── pages/          # Page-level components
-├── services/       # API services and external integrations
-├── types/          # TypeScript type definitions
-├── utils/          # Utility functions and helpers
-├── constants/      # Application constants
-├── styles/         # Global styles and theme definitions
-├── App.tsx         # Main application component
-└── main.tsx        # Application entry point
+components/
+├── ui/           # Reusable UI components
+├── layouts/      # Layout components
+├── seo/          # SEO-related components
+└── errors/       # Error handling components
 ```
 
-### Component Hierarchy
-- **Pages** → **Layout Components** → **Feature Components** → **UI Components**
-- Each component should have a single responsibility
-- Prefer composition over inheritance
-- Use React Context for global state management
+### Feature Organization
+```
+features/
+├── auth/
+├── discussions/
+├── comments/
+└── users/
+```
 
-## File Naming Conventions
+### Export Patterns
+- Each component directory should have an `index.ts` file
+- Use named exports: `export * from './component-name'`
+- Avoid default exports for better tree-shaking
 
-### Files and Directories
-- **Components**: PascalCase (`Header.tsx`, `UserProfile.tsx`)
-- **Hooks**: camelCase starting with "use" (`useAuth.ts`, `useLocalStorage.ts`)
-- **Utilities**: camelCase (`formatPrice.ts`, `validateEmail.ts`)
-- **Constants**: UPPER_SNAKE_CASE (`API_ENDPOINTS.ts`, `THEME_COLORS.ts`)
-- **Types**: PascalCase (`User.ts`, `ApiResponse.ts`)
-- **Directories**: camelCase (`components`, `contexts`, `utils`)
+## Import Organization
 
-### Component Structure
-- **Component files**: Always `.tsx` for components with JSX
-- **Hook files**: `.ts` for custom hooks without JSX
-- **Type files**: `.ts` for type definitions
-- **Index files**: `index.ts` for barrel exports
+Follow this order (enforced by ESLint):
+1. External libraries (React, third-party packages)
+2. Internal imports with absolute paths (`@/`)
+3. Relative imports
+4. Type-only imports at the end
 
-### Variables and Functions
-- **Variables**: camelCase (`userData`, `isLoading`)
-- **Functions**: camelCase (`handleSubmit`, `validateForm`)
-- **Constants**: UPPER_SNAKE_CASE (`MAX_RETRY_ATTEMPTS`, `DEFAULT_TIMEOUT`)
-- **Component props**: camelCase (`onClick`, `isDisabled`)
-- **CSS classes**: kebab-case (`btn-primary`, `form-container`)
-
-## Code Organization
-
-### Import Order
 ```typescript
-// 1. React and React-related imports
-import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React from 'react';
+import { useState } from 'react';
+import { NavLink } from 'react-router';
 
-// 2. Third-party libraries
-import axios from 'axios';
-import { toast } from 'react-toastify';
+import { Button } from '@/components/ui/button';
+import { paths } from '@/config/paths';
+import { cn } from '@/utils/cn';
 
-// 3. Internal imports (absolute paths)
-import { useAuth } from '@/hooks/useAuth';
-import { Button } from '@/components/ui/Button';
-import { User } from '@/types/User';
+import { LocalComponent } from './local-component';
 
-// 4. Relative imports
-import './ComponentName.css';
+import type { ComponentProps } from './types';
 ```
 
-### Component Structure Template
-```typescript
-// Types
-interface ComponentNameProps {
-  // Props interface
-}
+## Code Formatting
 
-// Component
-const ComponentName: React.FC<ComponentNameProps> = ({
-  // Destructured props
-}) => {
-  // Hooks
-  const [state, setState] = useState();
-  
-  // Effects
-  useEffect(() => {
-    // Effect logic
-  }, []);
-  
-  // Handlers
-  const handleAction = () => {
-    // Handler logic
-  };
-  
-  // Constants
-  const COMPONENT_CONSTANTS = {
-    // Component-specific constants
-  };
-  
-  // Render
-  return (
-    <div>
-      {/* JSX content */}
-    </div>
-  );
+### Prettier Configuration
+- Single quotes for strings
+- Trailing commas everywhere
+- 80 character line width
+- 2 spaces for indentation
+- No tabs
+
+### ESLint Rules
+- Strict TypeScript rules enabled
+- React hooks rules enforced
+- Import order and restrictions enforced
+- Accessibility rules (jsx-a11y)
+- Testing library rules
+
+## TypeScript Guidelines
+
+### Type Definitions
+- Use `type` for object shapes and unions
+- Use `interface` for extensible contracts
+- Prefer explicit return types for functions
+- Use generic constraints when appropriate
+
+```typescript
+// Good
+type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
+  variant?: 'default' | 'destructive' | 'outline';
+  size?: 'default' | 'sm' | 'lg';
+  isLoading?: boolean;
 };
 
-export default ComponentName;
-```
-
-## Component Design Principles
-
-### Single Responsibility
-- Each component should have one clear purpose
-- Break down complex components into smaller, focused ones
-- Use composition to combine simple components
-
-### Props Interface Design
-```typescript
-// ✅ Good - Clear, typed props
-interface ButtonProps {
-  children: React.ReactNode;
-  variant?: 'primary' | 'secondary' | 'danger';
-  size?: 'sm' | 'md' | 'lg';
-  disabled?: boolean;
-  loading?: boolean;
-  onClick?: () => void;
-  className?: string;
-}
-
-// ❌ Bad - Unclear, untyped props
-interface ButtonProps {
-  text: any;
-  type: string;
-  action: Function;
-}
-```
-
-### State Management
-- Use `useState` for local component state
-- Use `useReducer` for complex state logic
-- Use React Context for global state
-- Consider external state management (Zustand, Redux) for complex applications
-
-## Performance Guidelines
-
-### React.memo Usage
-```typescript
-// ✅ Good - Memoize expensive components
-const ExpensiveComponent = React.memo<Props>(({ data }) => {
-  return <div>{/* Expensive rendering */}</div>;
-});
-
-// ✅ Good - Custom comparison function
-const OptimizedComponent = React.memo<Props>(
-  ({ user, settings }) => {
-    return <div>{/* Component content */}</div>;
-  },
-  (prevProps, nextProps) => {
-    return prevProps.user.id === nextProps.user.id;
+// Component with explicit return type
+const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
+  ({ className, variant, ...props }, ref) => {
+    // implementation
   }
 );
 ```
 
-### useCallback and useMemo
-```typescript
-// ✅ Good - Memoize expensive calculations
-const expensiveValue = useMemo(() => {
-  return heavyCalculation(data);
-}, [data]);
+## Component Guidelines
 
-// ✅ Good - Memoize event handlers
-const handleClick = useCallback(() => {
-  onItemClick(item.id);
-}, [item.id, onItemClick]);
+### Component Structure
+1. Imports (external, internal, relative, types)
+2. Type definitions
+3. Constants and utilities
+4. Main component
+5. Default export (if needed)
+
+### Props and State
+- Use TypeScript for all props
+- Destructure props in function signature
+- Use meaningful prop names
+- Provide default values when appropriate
+
+### Event Handlers
+- Prefix with `handle` or `on`
+- Use arrow functions for inline handlers
+- Extract complex handlers to separate functions
+
+```typescript
+const handleSubmit = (event: React.FormEvent) => {
+  event.preventDefault();
+  // handle submission
+};
+
+return (
+  <form onSubmit={handleSubmit}>
+    <button onClick={() => setOpen(false)}>Close</button>
+  </form>
+);
 ```
 
 ## Error Handling
 
-### Error Boundaries
-```typescript
-class ErrorBoundary extends React.Component<Props, State> {
-  constructor(props: Props) {
-    super(props);
-    this.state = { hasError: false };
-  }
-
-  static getDerivedStateFromError(error: Error): State {
-    return { hasError: true };
-  }
-
-  componentDidCatch(error: Error, errorInfo: React.ErrorInfo) {
-    console.error('Error caught by boundary:', error, errorInfo);
-  }
-
-  render() {
-    if (this.state.hasError) {
-      return <ErrorFallback />;
-    }
-
-    return this.props.children;
-  }
-}
-```
-
-### Async Error Handling
-```typescript
-// ✅ Good - Proper async error handling
-const fetchData = async () => {
-  try {
-    setLoading(true);
-    const response = await api.getData();
-    setData(response.data);
-  } catch (error) {
-    setError(error instanceof Error ? error.message : 'Unknown error');
-    toast.error('Failed to fetch data');
-  } finally {
-    setLoading(false);
-  }
-};
-```
-
-## Accessibility Guidelines
-
-### Semantic HTML
-```typescript
-// ✅ Good - Semantic HTML structure
-return (
-  <main>
-    <header>
-      <h1>Page Title</h1>
-      <nav aria-label="Main navigation">
-        {/* Navigation items */}
-      </nav>
-    </header>
-    <section aria-labelledby="content-heading">
-      <h2 id="content-heading">Content Section</h2>
-      {/* Content */}
-    </section>
-  </main>
-);
-```
-
-### ARIA Attributes
-```typescript
-// ✅ Good - Proper ARIA usage
-<button
-  aria-label="Close dialog"
-  aria-expanded={isOpen}
-  onClick={handleClose}
->
-  <CloseIcon aria-hidden="true" />
-</button>
-```
-
-## Environment Configuration
-
-### Environment Variables
-- Use `.env` files for configuration
-- Provide `.env.example` with all required variables
-- Never commit sensitive data to version control
-- Use proper defaults for development
-
-```typescript
-// ✅ Good
-const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:3001';
-const isDevelopment = import.meta.env.DEV;
-```
-
-## Code Quality Standards
-
-### ESLint Configuration
-- Use strict ESLint rules for consistency
-- Configure Prettier for code formatting
-- Use TypeScript strict mode
-- Implement pre-commit hooks
-
-### Documentation
-- Document complex components with JSDoc
-- Maintain README files for major features
-- Use TypeScript for self-documenting code
-- Include usage examples in component documentation
-
-## Best Practices Summary
-
-### Do's ✅
-- Use TypeScript strict mode
-- Implement proper error boundaries
-- Follow React hooks rules
-- Use semantic HTML and ARIA attributes
+- Use Error Boundaries for component-level error handling
 - Implement proper loading and error states
-- Use React.memo for performance optimization
-- Follow consistent naming conventions
-- Write self-documenting code
+- Use try-catch for async operations
+- Provide meaningful error messages
 
-### Don'ts ❌
-- Don't use `any` type
-- Don't mutate props or state directly
-- Don't use array indices as keys
-- Don't ignore accessibility requirements
-- Don't skip error handling
-- Don't use inline styles for complex styling
-- Don't create deeply nested component hierarchies
-- Don't ignore React warnings in console
+## Performance Guidelines
+
+- Use React.memo for expensive components
+- Implement proper dependency arrays for hooks
+- Avoid inline object/array creation in render
+- Use callback hooks for expensive computations
+
+## Testing
+
+- Write tests for all components and utilities
+- Use React Testing Library for component tests
+- Follow AAA pattern (Arrange, Act, Assert)
+- Test user interactions, not implementation details
+
+## Documentation
+
+- Use JSDoc comments for complex functions
+- Write clear commit messages
+- Update README files when adding features
+- Document breaking changes
+
+## Security
+
+- Sanitize user input (use DOMPurify for HTML)
+- Validate all external data
+- Use environment variables for sensitive data
+- Implement proper authentication checks
+
+## Accessibility
+
+- Use semantic HTML elements
+- Provide proper ARIA labels
+- Ensure keyboard navigation works
+- Test with screen readers
+- Maintain proper color contrast

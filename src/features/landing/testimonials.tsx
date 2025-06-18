@@ -1,12 +1,29 @@
+// 1. Imports
 import React, { useEffect, useState } from 'react';
-import { useLanguage } from '../contexts/LanguageContext';
+import { useLanguage } from '@/contexts/LanguageContext';
 import { Star, Quote } from 'lucide-react';
 
-const Testimonials: React.FC = () => {
+// 2. Types
+type Testimonial = {
+  name: string;
+  role: string;
+  company: string;
+  content: string;
+  avatar: string;
+};
+
+type TestimonialsProps = {
+  className?: string;
+};
+
+// 3. Component
+const Testimonials = ({ className }: TestimonialsProps) => {
+  // 4. Hooks
   const { t } = useLanguage();
   const [isVisible, setIsVisible] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
 
+  // 5. Effects
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -31,7 +48,7 @@ const Testimonials: React.FC = () => {
     return () => clearInterval(interval);
   }, []);
 
-  // 7. Constants
+  // 6. Constants
   const testimonials: Testimonial[] = [
     {
       name: 'Sarah Chen',
@@ -57,7 +74,7 @@ const Testimonials: React.FC = () => {
   ];
 
   return (
-    <section id="testimonials" className="py-20 bg-slate-900/50">
+    <section id="testimonials" className={`py-20 bg-slate-900/50 ${className || ''}`}>
       <div className="container mx-auto px-6">
         {/* Section Header */}
         <div className="text-center mb-16">
@@ -146,4 +163,7 @@ const Testimonials: React.FC = () => {
   );
 };
 
-export default Testimonials;
+Testimonials.displayName = 'Testimonials';
+
+export { Testimonials };
+export type { TestimonialsProps };

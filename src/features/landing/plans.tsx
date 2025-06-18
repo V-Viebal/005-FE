@@ -1,35 +1,35 @@
 // 1. Imports
 import React, { useState, useEffect } from 'react';
 import { Check, Star } from 'lucide-react';
-import { useLanguage } from '../contexts/LanguageContext';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 // 2. Types
 type Duration = '1month' | '3months' | '6months' | '1year';
 type PlanTab = 'trial' | 'longterm';
 
-interface Plan {
+type Plan = {
   name: string;
   cpu: string;
   ram: string;
   storage: string;
   prices: Record<Duration, number>;
   popular?: boolean;
-}
+};
 
-interface TrialPlan {
+type TrialPlan = {
   name: string;
   cpu: string;
   ram: string;
   storage: string;
   price: number;
-}
+};
 
-interface PlansProps {
-  // Add props if needed in the future
-}
+type PlansProps = {
+  className?: string;
+};
 
 // 3. Component
-const Plans: React.FC<PlansProps> = () => {
+const Plans = ({ className }: PlansProps) => {
   // 4. Hooks
   const { t } = useLanguage();
   const [selectedDuration, setSelectedDuration] = useState<Duration>('1month');
@@ -167,7 +167,7 @@ const Plans: React.FC<PlansProps> = () => {
   };
 
   return (
-    <section id="plans" className="py-20 bg-slate-900">
+    <section id="plans" className={`py-20 bg-slate-900 ${className || ''}`}>
       <div className="container mx-auto px-6">
         {/* Section Header */}
         <div className="text-center mb-16">
@@ -431,4 +431,7 @@ const Plans: React.FC<PlansProps> = () => {
   );
 };
 
-export default Plans;
+Plans.displayName = 'Plans';
+
+export { Plans };
+export type { PlansProps, Plan, TrialPlan, Duration, PlanTab };

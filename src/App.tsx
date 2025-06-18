@@ -1,14 +1,16 @@
 import React from 'react';
-import { LanguageProvider } from './contexts/LanguageContext';
-import Header from './components/Header';
-import Hero from './components/Hero';
-import ValueProposition from './components/ValueProposition';
-import Plans from './components/Plans';
-import Features from './components/Features';
-import Testimonials from './components/Testimonials';
-import FAQ from './components/FAQ';
-import FinalCTA from './components/FinalCTA';
-import Footer from './components/Footer';
+import { LanguageProvider } from '@/contexts/LanguageContext';
+import {
+  Header,
+  Hero,
+  ValueProposition,
+  Plans,
+  Features,
+  Testimonials,
+  FAQ,
+  FinalCTA,
+  Footer,
+} from '@/components';
 
 function App() {
   return (
