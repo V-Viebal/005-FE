@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useLanguage } from '../contexts/LanguageContext';
-import { Globe, Shield, Zap, Headphones } from 'lucide-react';
+import { Shield, Zap, Clock, Users } from 'lucide-react';
 
 const ValueProposition: React.FC = () => {
   const { t } = useLanguage();
@@ -22,32 +22,33 @@ const ValueProposition: React.FC = () => {
     return () => observer.disconnect();
   }, []);
 
+  // 7. Constants
   const features = [
     {
-      icon: Globe,
-      title: t('unleashData'),
-      description: t('unleashDataDesc'),
+      icon: Zap,
+      title: t('lightningFast'),
+      description: t('lightningFastDesc'),
       large: true,
       delay: 0,
     },
     {
       icon: Shield,
-      title: t('digitalIdentity'),
-      description: t('digitalIdentityDesc'),
+      title: t('enterpriseSecurity'),
+      description: t('enterpriseSecurityDesc'),
       large: false,
       delay: 200,
     },
     {
-      icon: Zap,
-      title: t('instantActivation'),
-      description: t('instantActivationDesc'),
+      icon: Clock,
+      title: t('instantDeployment'),
+      description: t('instantDeploymentDesc'),
       large: false,
       delay: 400,
     },
     {
-      icon: Headphones,
-      title: t('alwaysOnExpertise'),
-      description: t('alwaysOnExpertiseDesc'),
+      icon: Users,
+      title: t('expertSupport'),
+      description: t('expertSupportDesc'),
       large: true,
       delay: 600,
     },
@@ -92,14 +93,14 @@ const ValueProposition: React.FC = () => {
             >
               {/* Gradient Overlay */}
               <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-cyan-500/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-              
+
               {/* Icon */}
               <div className="relative mb-6">
                 <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                   <feature.icon className="w-8 h-8 text-white" />
                 </div>
               </div>
-              
+
               {/* Content */}
               <div className="relative">
                 <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-blue-100 transition-colors duration-300">

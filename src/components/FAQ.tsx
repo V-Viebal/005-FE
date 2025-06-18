@@ -32,30 +32,31 @@ const FAQ: React.FC<FAQProps> = () => {
     return () => observer.disconnect();
   }, []);
 
+  // 7. Constants
   const faqs = [
     {
-      question: 'How quickly can I get my VPS up and running?',
-      answer: 'Your VPS will be automatically provisioned and ready to use within 5 minutes of payment confirmation. You\'ll receive login credentials via email immediately after setup.',
+      question: t('faqQuestion1'),
+      answer: t('faqAnswer1'),
     },
     {
-      question: 'What operating systems do you support?',
-      answer: 'We support all major Linux distributions including Ubuntu, CentOS, Debian, and Fedora. Windows Server options are also available upon request.',
+      question: t('faqQuestion2'),
+      answer: t('faqAnswer2'),
     },
     {
-      question: 'Is there really unlimited bandwidth?',
-      answer: 'Yes, we provide truly unlimited bandwidth with no hidden caps or throttling. Our ~600Mbps port ensures consistent high-speed performance for all your applications.',
+      question: t('faqQuestion3'),
+      answer: t('faqAnswer3'),
     },
     {
-      question: 'What kind of support do you offer?',
-      answer: 'We provide 24/7 technical support via live chat, email, and phone. Our team consists of experienced system administrators ready to help with any technical issues.',
+      question: t('faqQuestion4'),
+      answer: t('faqAnswer4'),
     },
     {
-      question: 'Can I upgrade my plan later?',
-      answer: 'Absolutely! You can upgrade your VPS plan at any time. The process is seamless with minimal downtime, and you\'ll only pay the prorated difference.',
+      question: t('faqQuestion5'),
+      answer: t('faqAnswer5'),
     },
     {
-      question: 'What is your uptime guarantee?',
-      answer: 'We guarantee 99.9% uptime backed by our SLA. If we fall short, we provide service credits as compensation. Our redundant infrastructure ensures maximum reliability.',
+      question: t('faqQuestion6'),
+      answer: t('faqAnswer6'),
     },
   ];
 

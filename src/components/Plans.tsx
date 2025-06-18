@@ -281,7 +281,7 @@ const Plans: React.FC<PlansProps> = () => {
 
                     {/* Features */}
                     <div className="space-y-2 mb-8">
-                      {['Dedicated IPv4', '99.9% Uptime', '24/7 Support', 'Instant Setup'].map((feature, i) => (
+                      {[t('dedicatedIpv4'), t('uptimeGuarantee'), t('support247'), t('instantSetup')].map((feature, i) => (
                         <div key={i} className="flex items-center space-x-2 text-sm">
                           <Check className="w-4 h-4 text-green-400" />
                           <span className="text-slate-300">{feature}</span>
@@ -307,14 +307,14 @@ const Plans: React.FC<PlansProps> = () => {
               <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">
                 {t('longtermTitle')}
               </h3>
-              
+
               {/* Duration Selector */}
-              <div className="inline-flex bg-slate-800/50 backdrop-blur-xl border border-slate-700/50 rounded-2xl p-2">
+              <div className="inline-flex bg-slate-800/50 backdrop-blur-xl border border-slate-700/50 rounded-2xl p-2 gap-2">
                 {durations.map((duration) => (
                   <button
                     key={duration.key}
                     onClick={() => setSelectedDuration(duration.key)}
-                    className={`relative px-6 py-3 rounded-xl font-medium transition-all duration-300 ${
+                    className={`relative px-4 py-2 rounded-xl font-medium transition-all duration-300 ${
                       selectedDuration === duration.key
                         ? 'text-white bg-gradient-to-r from-blue-600 to-cyan-600 shadow-lg'
                         : 'text-slate-400 hover:text-white hover:bg-slate-700/50'
@@ -348,7 +348,7 @@ const Plans: React.FC<PlansProps> = () => {
                 >
                   {/* Popular Badge */}
                   {plan.popular && (
-                    <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                    <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 w-max">
                       <div className="bg-gradient-to-r from-blue-500 to-cyan-500 text-white px-4 py-2 rounded-full text-sm font-semibold flex items-center space-x-1">
                         <Star className="w-4 h-4 fill-current" />
                         <span>{t('mostPopular')}</span>
@@ -408,7 +408,7 @@ const Plans: React.FC<PlansProps> = () => {
 
                     {/* Features */}
                     <div className="space-y-2 mb-8">
-                      {['Dedicated IPv4', '99.9% Uptime', '24/7 Support', 'Instant Setup'].map((feature, i) => (
+                      {[t('dedicatedIpv4'), t('uptimeGuarantee'), t('support247'), t('instantSetup')].map((feature, i) => (
                         <div key={i} className="flex items-center space-x-2 text-sm">
                           <Check className="w-4 h-4 text-green-400" />
                           <span className="text-slate-300">{feature}</span>

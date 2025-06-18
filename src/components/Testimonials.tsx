@@ -31,30 +31,28 @@ const Testimonials: React.FC = () => {
     return () => clearInterval(interval);
   }, []);
 
-  const testimonials = [
+  // 7. Constants
+  const testimonials: Testimonial[] = [
     {
       name: 'Sarah Chen',
-      role: 'Full Stack Developer',
+      role: t('fullStackDeveloper'),
       company: 'TechStart Inc.',
-      image: 'https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop',
-      content: 'ArchitectVPS has been a game-changer for our development workflow. The performance is incredible and the support team is always there when we need them.',
-      rating: 5,
+      content: t('testimonial1'),
+      avatar: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80',
     },
     {
       name: 'Michael Rodriguez',
-      role: 'DevOps Engineer',
-      company: 'CloudScale Solutions',
-      image: 'https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop',
-      content: 'The instant provisioning and unlimited bandwidth have made our deployment process seamless. Best VPS provider we\'ve used in Vietnam.',
-      rating: 5,
+      role: t('devopsEngineer'),
+      company: t('cloudscaleSolutions'),
+      content: t('testimonial2'),
+      avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80',
     },
     {
       name: 'Emily Johnson',
-      role: 'Product Manager',
-      company: 'Innovation Labs',
-      image: 'https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop',
-      content: 'Reliable, fast, and professional. ArchitectVPS helped us scale our application from startup to serving thousands of users without any downtime.',
-      rating: 5,
+      role: t('productManager'),
+      company: t('innovationLabs'),
+      content: t('testimonial3'),
+      avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80',
     },
   ];
 
@@ -112,7 +110,7 @@ const Testimonials: React.FC = () => {
                     {/* Author */}
                     <div className="flex items-center space-x-4">
                       <img
-                        src={testimonial.image}
+                        src={testimonial.avatar}
                         alt={testimonial.name}
                         className="w-16 h-16 rounded-full object-cover border-2 border-blue-500/30"
                       />

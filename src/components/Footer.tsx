@@ -50,14 +50,14 @@ const Footer: React.FC<FooterProps> = () => {
 
           {/* Quick Links */}
           <div>
-            <h4 className="text-white font-semibold mb-4">Quick Links</h4>
+            <h4 className="text-white font-semibold mb-4">{t('quickLinks')}</h4>
             <ul className="space-y-2">
               {[
-                { label: 'Pricing', href: '#plans' },
-                { label: 'Features', href: '#features' },
-                { label: 'Documentation', href: '#' },
-                { label: 'API', href: '#' },
-                { label: 'Status', href: '#' },
+                { label: t('pricing'), href: '#plans' },
+                { label: t('features'), href: '#features' },
+                { label: t('documentation'), href: '#' },
+                { label: t('api'), href: '#' },
+                { label: t('status'), href: '#' },
               ].map((link) => (
                 <li key={link.label}>
                   <a
@@ -73,14 +73,14 @@ const Footer: React.FC<FooterProps> = () => {
 
           {/* Support */}
           <div>
-            <h4 className="text-white font-semibold mb-4">Support</h4>
+            <h4 className="text-white font-semibold mb-4">{t('support')}</h4>
             <ul className="space-y-2">
               {[
-                { label: 'Help Center', href: '#' },
-                { label: 'Contact Us', href: '#' },
-                { label: 'System Status', href: '#' },
-                { label: 'Community', href: '#' },
-                { label: 'Terms of Service', href: '#' },
+                { label: t('helpCenter'), href: '#' },
+                { label: t('contactUs'), href: '#' },
+                { label: t('systemStatus'), href: '#' },
+                { label: t('community'), href: '#' },
+                { label: t('termsOfService'), href: '#' },
               ].map((link) => (
                 <li key={link.label}>
                   <a

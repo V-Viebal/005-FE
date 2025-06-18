@@ -33,15 +33,10 @@ const FinalCTA: React.FC = () => {
             isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
           }`}
         >
-          <h2 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-white via-blue-100 to-cyan-100 bg-clip-text text-transparent">
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
             {t('finalCtaTitle')}
           </h2>
-          
-          <p
-            className={`text-xl md:text-2xl text-slate-300 mb-12 max-w-2xl mx-auto transform transition-all duration-1000 delay-200 ${
-              isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
-            }`}
-          >
+          <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
             {t('finalCtaSubtitle')}
           </p>
           
@@ -50,13 +45,11 @@ const FinalCTA: React.FC = () => {
               isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
             }`}
           >
-            <button className="group relative inline-flex items-center space-x-3 px-12 py-6 bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-500 hover:to-cyan-500 text-white font-bold text-xl rounded-2xl shadow-2xl hover:shadow-blue-500/25 transition-all duration-300 transform hover:scale-105">
-              <Rocket className="w-6 h-6 group-hover:rotate-12 transition-transform duration-300" />
-              <span>{t('startBuilding')}</span>
-              <ArrowRight className="w-6 h-6 transform group-hover:translate-x-2 transition-transform duration-300" />
-              
-              {/* Animated glow effect */}
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-cyan-400 opacity-0 group-hover:opacity-100 rounded-2xl blur-xl transition-opacity duration-300 -z-10"></div>
+            <button className="bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-blue-50 transition-colors duration-300 shadow-lg hover:shadow-xl transform hover:scale-105">
+              {t('startFreeTrial')}
+            </button>
+            <button className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white hover:text-blue-600 transition-colors duration-300">
+              {t('viewPricing')}
             </button>
           </div>
           

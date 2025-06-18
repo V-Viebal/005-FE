@@ -31,42 +31,43 @@ const Features: React.FC<FeaturesProps> = () => {
     return () => observer.disconnect();
   }, []);
 
+  // 7. Constants
   const features = [
     {
       icon: Server,
-      title: 'Enterprise Hardware',
-      description: 'Latest Intel Xeon processors with NVMe SSD storage for maximum performance.',
+      title: t('enterpriseHardware'),
+      description: t('enterpriseHardwareDesc'),
       delay: 0,
     },
     {
       icon: Shield,
-      title: 'Advanced Security',
-      description: 'DDoS protection, firewall, and regular security updates keep your data safe.',
-      delay: 100,
-    },
-    {
-      icon: Zap,
-      title: 'Lightning Fast',
-      description: 'Up to 10Gbps network connectivity with optimized routing for speed.',
+      title: t('advancedSecurity'),
+      description: t('advancedSecurityDesc'),
       delay: 200,
     },
     {
-      icon: Globe,
-      title: 'Global Network',
-      description: 'Strategic data center locations for optimal performance worldwide.',
-      delay: 300,
-    },
-    {
-      icon: Headphones,
-      title: 'Expert Support',
-      description: 'Professional technical support available 24/7 via chat, email, and phone.',
+      icon: Zap,
+      title: t('lightningFast'),
+      description: t('lightningFastDesc'),
       delay: 400,
     },
     {
+      icon: Globe,
+      title: t('globalNetwork'),
+      description: t('globalNetworkDesc'),
+      delay: 600,
+    },
+    {
+      icon: Headphones,
+      title: t('expertSupport'),
+      description: t('expertSupportDesc'),
+      delay: 800,
+    },
+    {
       icon: Settings,
-      title: 'Full Control',
-      description: 'Complete root access with your choice of operating system and software.',
-      delay: 500,
+      title: t('fullControl'),
+      description: t('fullControlDesc'),
+      delay: 1000,
     },
   ];
 
